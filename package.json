@@ -1,0 +1,42 @@
+{
+  "name": "smh-cli",
+  "version": "1.0.6",
+  "description": "CLI for react/redux/saga",
+  "main": "index.js",
+  "scripts": {
+    "watch": "babel src -d build --presets @babel/preset-env --watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin" : { 
+    "smh-cli" : "./build/index.js" 
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DG-Team-X/React-CLI.git"
+  },
+  "keywords": [
+    "react",
+    "redux",
+    "saga",
+    "redux-saga",
+    "cli"
+  ],
+  "author": "Alex Safr",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DG-Team-X/React-CLI/issues"
+  },
+  "homepage": "https://github.com/DG-Team-X/React-CLI#readme",
+  "dependencies": {
+    "ansi-colors": "^4.1.1",
+    "fs": "0.0.1-security",
+    "minimist": "^1.2.5",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.14.3",
+    "@babel/core": "^7.14.3",
+    "@babel/preset-env": "^7.14.2",
+    "@babel/preset-es2016": "^7.0.0-beta.53"
+  }
+}
