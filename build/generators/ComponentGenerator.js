@@ -23,22 +23,23 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var PageGenerator = /*#__PURE__*/function () {
-  function PageGenerator(args) {
-    _classCallCheck(this, PageGenerator);
+var ComponentGenerator = /*#__PURE__*/function () {
+  function ComponentGenerator(args) {
+    _classCallCheck(this, ComponentGenerator);
 
     var name = args._.shift();
 
     if (name) {
       this.args = args;
       this.name = _utils.files.ucFirst(name);
-      this.dir = "pages/".concat(this.name);
+      this.dir = "components/".concat(this.name);
     } else {
+      // this.help()
       throw new Error("component name required");
     }
   }
 
-  _createClass(PageGenerator, [{
+  _createClass(ComponentGenerator, [{
     key: "generate",
     value: function generate() {
       this.generateDirectory();
@@ -54,7 +55,7 @@ var PageGenerator = /*#__PURE__*/function () {
   }, {
     key: "generateComponent",
     value: function generateComponent() {
-      var imports = ["import React from 'react'", "import './".concat(_utils.files.ucFirst(this.name), ".scss'")];
+      var imports = ["import React from 'react'", "import './".concat(this.name, ".scss'")];
       var componentCode = (0, _componentTemplate["default"])(imports, this.name);
 
       _utils.files.file(this.dir, "".concat(this.name, ".jsx"), componentCode);
@@ -69,22 +70,22 @@ var PageGenerator = /*#__PURE__*/function () {
   }, {
     key: "generateExports",
     value: function generateExports() {
-      _utils.files.read('pages').then(function (list) {
+      _utils.files.read('components').then(function (list) {
         var components = list.filter(function (fname) {
           return fname != "index.js";
         });
         var exportsCode = (0, _exportsTemplate["default"])(components);
 
-        _utils.files.file('pages', 'index.js', exportsCode);
+        _utils.files.file('components', 'index.js', exportsCode);
       });
     }
   }]);
 
-  return PageGenerator;
+  return ComponentGenerator;
 }();
 
-exports["default"] = PageGenerator;
+exports["default"] = ComponentGenerator;
 
-_defineProperty(PageGenerator, "alias", 'p');
+_defineProperty(ComponentGenerator, "alias", 'c');
 
-_defineProperty(PageGenerator, "description", 'Make a page');
+_defineProperty(ComponentGenerator, "description", 'Make a component');

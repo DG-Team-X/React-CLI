@@ -86,4 +86,6 @@ var StoreGenerator = /*#__PURE__*/function () {
 
 exports["default"] = StoreGenerator;
 
+_defineProperty(StoreGenerator, "alias", 's');
+
 _defineProperty(StoreGenerator, "description", 'Make a store');

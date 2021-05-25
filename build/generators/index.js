@@ -5,7 +5,9 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports["default"] = void 0;
 
-var _ComponenGenerator = _interopRequireDefault(require("./ComponenGenerator"));
+var _BaseComponentGenerator = _interopRequireDefault(require("./BaseComponentGenerator"));
+
+var _ComponentGenerator = _interopRequireDefault(require("./ComponentGenerator"));
 
 var _PageGenerator = _interopRequireDefault(require("./PageGenerator"));
 
@@ -15,7 +17,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 
 var _default = {
   page: _PageGenerator["default"],
-  component: _ComponenGenerator["default"],
-  store: _StoreGenerator["default"]
+  component: _ComponentGenerator["default"],
+  store: _StoreGenerator["default"],
+  baseComponent: _BaseComponentGenerator["default"]
 };
 exports["default"] = _default;

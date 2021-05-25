@@ -7,8 +7,8 @@
     "watch": "babel src -d build --presets @babel/preset-env --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "bin" : { 
-    "smh-cli" : "./build/index.js" 
+  "bin": {
+    "smh-cli": "./build/index.js"
   },
   "repository": {
     "type": "git",

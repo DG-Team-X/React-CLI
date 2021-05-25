@@ -5,6 +5,7 @@ import stylesTemplate from "./templates/stylesTemplate";
 
 export default class ComponentGenerator {
 
+    static alias = 'c';
     static description = 'Make a component'
     
     constructor(args) {

@@ -3,18 +3,19 @@ import componentTemplate from "./templates/componentTemplate";
 import exportsTemplate from "./templates/exportsTemplate";
 import stylesTemplate from "./templates/stylesTemplate";
 
-export default class PageGenerator {
+export default class BaseComponentGenerator {
 
-    static alias = 'p';
-    static description = 'Make a page'
-
+    static alias = 'bc';
+    static description = 'Make a base component'
+    
     constructor(args) {
         const name = args._.shift();
         if(name) {
             this.args = args;
             this.name = files.ucFirst(name);
-            this.dir = `pages/${this.name}`;
+            this.dir = `baseComponents/${this.name}`;
         } else {
+            // this.help()
             throw new Error("component name required");
         }
     }
@@ -23,7 +24,7 @@ export default class PageGenerator {
         this.generateDirectory();
         this.generateComponent();
         this.generateStyles();
-        this.generateExports();
+        this.generateExports()
     }
 
     generateDirectory() {
@@ -33,7 +34,7 @@ export default class PageGenerator {
     generateComponent() {
         const imports = [
             `import React from 'react'`,
-            `import './${files.ucFirst(this.name)}.scss'`,
+            `import './${this.name}.scss'`,
         ];
 
         const componentCode = componentTemplate(imports, this.name);
@@ -47,11 +48,11 @@ export default class PageGenerator {
     }
 
     generateExports() {
-        files.read('pages').then(list => {
+        files.read('baseComponents').then(list => {
             const components = list.filter(fname => fname != "index.js")
             const exportsCode = exportsTemplate(components);
 
-            files.file('pages', 'index.js', exportsCode);
+            files.file('baseComponents', 'index.js', exportsCode);
         })
     }
 }

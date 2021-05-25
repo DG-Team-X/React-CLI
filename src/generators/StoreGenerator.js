@@ -10,6 +10,8 @@ const dirs = {
 };
 
 export default class StoreGenerator {
+
+    static alias = 's';
     static description = 'Make a store'
 
     constructor(args) {

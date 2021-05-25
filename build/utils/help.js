@@ -33,9 +33,9 @@ var renderItem = function renderItem(item, lvl) {
 
 exports.renderItem = renderItem;
 
-var command = function command(_command, description) {
+var command = function command(_command, alias, description) {
   return {
-    text: "".concat(_c["default"].green(_command).padEnd(28, ' '), " ").concat(description)
+    text: "".concat(_c["default"].green(_command).padEnd(32, ' '), " ").concat(_c["default"].green(alias).padEnd(22, ' '), " ").concat(description)
   };
 };
 

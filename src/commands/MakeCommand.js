@@ -10,6 +10,7 @@ class MakeCommand extends BaseCommand {
             title: 'Make',
             items: Object.keys(generators).map(generator => help.command(
                 `make:${generator}`,
+                `make:${generators[generator].alias}`,
                 generators[generator].description
             ))
         }
@@ -19,7 +20,10 @@ class MakeCommand extends BaseCommand {
 
     execute(data, args) {
         const type = data[1];
-        const generatorClass = generators[type];
+        const aliasKey = Object.keys(generators).find(gKey => generators[gKey].alias == type);
+        const generatorClass = aliasKey ? generators[aliasKey] : generators[type];
+
+        console.log(generatorClass);
 
         if(generatorClass) {
             try {

@@ -18,9 +18,9 @@ export const renderItem = (item, lvl) => {
     }
 }
 
-export const command = (command, description) => {
+export const command = (command, alias, description) => {
     return {
-        text: `${c.green(command).padEnd(28, ' ')} ${description}`
+        text: `${c.green(command).padEnd(32, ' ')} ${c.green(alias).padEnd(22, ' ')} ${description}`
     }
 }
 

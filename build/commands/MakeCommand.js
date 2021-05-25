@@ -68,7 +68,7 @@ var MakeCommand = /*#__PURE__*/function (_BaseCommand) {
       var data = {
         title: 'Make',
         items: Object.keys(_generators["default"]).map(function (generator) {
-          return _utils.help.command("make:".concat(generator), _generators["default"][generator].description);
+          return _utils.help.command("make:".concat(generator), "make:".concat(_generators["default"][generator].alias), _generators["default"][generator].description);
         })
       };
 
@@ -78,7 +78,11 @@ var MakeCommand = /*#__PURE__*/function (_BaseCommand) {
     key: "execute",
     value: function execute(data, args) {
       var type = data[1];
-      var generatorClass = _generators["default"][type];
+      var aliasKey = Object.keys(_generators["default"]).find(function (gKey) {
+        return _generators["default"][gKey].alias == type;
+      });
+      var generatorClass = aliasKey ? _generators["default"][aliasKey] : _generators["default"][type];
+      console.log(generatorClass);
 
       if (generatorClass) {
         try {
