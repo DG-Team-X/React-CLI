@@ -30,6 +30,7 @@
   "dependencies": {
     "ansi-colors": "^4.1.1",
     "fs": "0.0.1-security",
+    "lodash": "^4.17.21",
     "minimist": "^1.2.5",
     "path": "^0.12.7"
   },

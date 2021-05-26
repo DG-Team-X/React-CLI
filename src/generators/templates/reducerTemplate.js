@@ -2,11 +2,11 @@ export default (name) => {
 return `
 import { } from '../actions/${name}';
 
-const INITIAL_STATE = {
-    list: []
+const inisitalState = {
+    // params
 }
 
-export default function (state = INITIAL_STATE, action) {
+export default function (state = inisitalState, action) {
     switch (action.type) {
         default:
             return state;

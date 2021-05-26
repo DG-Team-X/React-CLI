@@ -11,9 +11,10 @@ export const node = args._.shift();
 export const cli = args._.shift();
 export const command = args._.shift();
 
-console.log(process.cwd());
+console.log(args);
+// console.log(process.cwd());
 // console.log(execPath);
-console.log(__dirname);
+// console.log(__dirname);
 
 if(args.help) {
     const help = [];

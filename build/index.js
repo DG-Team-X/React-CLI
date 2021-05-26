@@ -32,9 +32,9 @@ exports.cli = cli;
 var command = args._.shift();
 
 exports.command = command;
-console.log(process.cwd()); // console.log(execPath);
-
-console.log(__dirname);
+console.log(args); // console.log(process.cwd());
+// console.log(execPath);
+// console.log(__dirname);
 
 if (args.help) {
   var help = [];

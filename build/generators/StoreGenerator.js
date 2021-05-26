@@ -13,6 +13,8 @@ var _reducerTemplate = _interopRequireDefault(require("./templates/reducerTempla
 
 var _sagasTemplate = _interopRequireDefault(require("./templates/sagasTemplate"));
 
+var _constantsTemplate = _interopRequireDefault(require("./templates/constantsTemplate"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -26,7 +28,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 var dirs = {
   actions: 'store/actions',
   reducers: 'store/reducers',
-  sagas: 'store/sagas'
+  sagas: 'store/sagas',
+  constants: 'store/constants'
 };
 
 var StoreGenerator = /*#__PURE__*/function () {
@@ -39,6 +42,7 @@ var StoreGenerator = /*#__PURE__*/function () {
       this.args = args;
       this.name = _utils.files.lcFirst(name);
       this.dir = "store/".concat(this.name);
+      console.log(this.args);
     } else {
       throw new Error("component name required");
     }
@@ -50,7 +54,8 @@ var StoreGenerator = /*#__PURE__*/function () {
       this.generateDirectory();
       this.generateAction();
       this.generateReducer();
-      this.generateSaga(); // this.generateState();
+      this.generateSaga();
+      this.generateConstants();
     }
   }, {
     key: "generateDirectory",
@@ -60,25 +65,29 @@ var StoreGenerator = /*#__PURE__*/function () {
       _utils.files.directory('store/reducers');
 
       _utils.files.directory('store/sagas');
+
+      _utils.files.directory('store/constants');
     }
   }, {
     key: "generateAction",
     value: function generateAction() {
-      _utils.files.file(dirs.actions, "".concat(this.name, ".js"), (0, _actionTemplate["default"])(this.name));
+      _utils.files.file(dirs.actions, "".concat(this.name, ".js"), (0, _actionTemplate["default"])(this.name, this.args.list));
     }
   }, {
     key: "generateReducer",
     value: function generateReducer() {
-      _utils.files.file(dirs.reducers, "".concat(this.name, ".js"), (0, _reducerTemplate["default"])(this.name));
+      _utils.files.file(dirs.reducers, "".concat(this.name, ".js"), (0, _reducerTemplate["default"])(this.name, this.args.list));
     }
   }, {
     key: "generateSaga",
     value: function generateSaga() {
-      _utils.files.file(dirs.sagas, "".concat(this.name, ".js"), (0, _sagasTemplate["default"])(this.name));
-    } // generateState() {
-    //     files.file(dirs.s, `${this.name}.js`, '');
-    // }
-
+      _utils.files.file(dirs.sagas, "".concat(this.name, ".js"), (0, _sagasTemplate["default"])(this.name, this.args.list));
+    }
+  }, {
+    key: "generateConstants",
+    value: function generateConstants() {
+      _utils.files.file(dirs.constants, "".concat(this.name, ".js"), (0, _constantsTemplate["default"])(this.name, this.args.list ? this.args.list : ''));
+    }
   }]);
 
   return StoreGenerator;
