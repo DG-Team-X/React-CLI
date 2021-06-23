@@ -1,11 +1,11 @@
 {
   "name": "smh-cli",
-  "version": "1.0.6",
+  "version": "1.1.0",
   "description": "CLI for react/redux/saga",
   "main": "index.js",
   "scripts": {
     "watch": "babel src -d build --presets @babel/preset-env --watch",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": ""
   },
   "bin": {
     "smh-cli": "./build/index.js"
