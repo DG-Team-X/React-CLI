@@ -34,7 +34,7 @@ export default class BaseComponentGenerator {
     generateComponent() {
         const imports = [
             `import React from 'react'`,
-            `import './${this.name}.scss'`,
+            `import './${files.lcFirst(this.name)}.scss'`,
         ];
 
         const componentCode = componentTemplate(imports, this.name);

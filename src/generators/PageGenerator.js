@@ -33,7 +33,7 @@ export default class PageGenerator {
     generateComponent() {
         const imports = [
             `import React from 'react'`,
-            `import './${files.ucFirst(this.name)}.scss'`,
+            `import './${files.lcFirst(this.name)}.scss'`,
         ];
 
         const componentCode = componentTemplate(imports, this.name);
