@@ -34,7 +34,7 @@ export default class BaseComponentGenerator {
     generateComponent() {
         const imports = [
             `import React from 'react'`,
-            `import './${this.name}.scss'`,
+            `import './${files.lcFirst(this.name)}.scss'`,
         ];
 
         const componentCode = componentTemplate(imports, this.name);
@@ -44,7 +44,7 @@ export default class BaseComponentGenerator {
 
     generateStyles() {
         const stylesCode = stylesTemplate(this.name);
-        files.file(this.dir, `${this.name}.scss`, stylesCode);
+        files.file(this.dir, `${files.lcFirst(this.name)}.scss`, stylesCode);
     }
 
     generateExports() {
