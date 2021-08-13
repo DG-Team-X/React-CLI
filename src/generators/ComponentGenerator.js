@@ -44,7 +44,7 @@ export default class ComponentGenerator {
 
     generateStyles() {
         const stylesCode = stylesTemplate(this.name);
-        files.file(this.dir, `${files.lcFirst(this.name)}.scss`, stylesCode);
+        files.file(this.dir, `${this.name}.scss`, stylesCode);
     }
 
     generateExports() {
